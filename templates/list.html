@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block body %}
+
+  <div class="container">
+     <h1>Saved Beats</h1>
+
+      <div class="row">
+        <ul class="list-group radio-group">
+          {% for beat in beats %}
+          <li class="list-group-item radio song-beat" data-value="{{ beat['file'] }}">
+            {{ beat['title'] }}
+          </li>
+          {% endfor %}          
+          <input type="text" id="filename" name="filename" hidden />
+        </ul>
+      </div>
+     
+
+  </div>
+
+  <script type="text/javascript">
+
+    $('.radio-group .radio').click(function(){
+        $(this).parent().find('.radio').removeClass('selected');
+        $(this).addClass('selected');
+        var val = $(this).attr('data-value');
+        console.log(val);
+        $(this).parent().find('input').val(val);
+        var id = $(this).parent().find('input').attr('id')
+        $("#" + id).val(val);
+    });
+    
+    $(function() {
+      var submit_song = function(e) {
+        $.getJSON($SCRIPT_ROOT + '/play_song', {
+          filename: $('input[name=filename]').val()
+        }, function(data) {
+          $('#result').text(data.result);
+        });
+        return false;
+      };
+      $('li.song-beat').bind('click', submit_song);
+      $('input[type=text]').bind('keydown', function(e) {
+        if (e.keyCode == 13) {
+          submit_song(e);
+        }
+      });
+    });
+
+  </script>
+
+  {% endblock %}

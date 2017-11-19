@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block body %}
+
+  <div class="container">
+     <h1>This Machine Kills Fascists</h1>
+
+     {% for beat in beats %}
+        <p>Beat playing: {{ beats[beat] }}<p>
+       {% if beats[beat] == 1 %}
+          <div class="row">
+            <div class="col-md-2">
+              <a href="/play/2" class="btn btn-block btn-lg btn-default" role="button">Beat 2</a>
+            </div>
+          </div>
+       {% else %}
+          <div class="row">
+            <div class="col-md-2">
+              <a href="/play/1" class="btn btn-block btn-lg btn-default" role="button">Beat 1</a>
+            </div>
+          </div>
+       {% endif %}
+     {% endfor %}
+
+  </div>
+
+  {% endblock %}
