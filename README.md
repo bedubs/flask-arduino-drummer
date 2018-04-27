@@ -1,23 +1,29 @@
-NanpyAPI
-========
+Flask-Arduino Drummer
+==
 
-Simple RESTful Web API to control Arduino pins with Nanpy & Flask
+_or_
 
-Dependencies
-------------
+Spirit Drumbot 3000
+--
 
-- nanpy > 0.5
-- flask
+This is basically a forked and revised version of a project done at University. It uses [Nanpy](https://github.com/nanpy/nanpy), which is a library/API for using Python to control an Arduino.
 
-Some examples using curl
-------------------------
+Spirit Drumbot is a machine whose main components are:
+* wood
+* an old lamp post
+* drumsticks
+* springs
+* 2 small 12 volt drill motors
+* some shoe strings 
+* a couple electric solenoids
+* an Arduino Uno board
+* Relay Shield
+* My son's tamborine
+* a Djembe
 
-Read from analog pin 0
 
-	curl http://127.0.0.1:5000/arduino/analogpin/0
+The Flask-Arduino Drummer is a Flask app that provides an API and web interface to control the drum. The original project also used a Raspberry Pi and was known by it's project codename, Jazzberry Pi.
 
-Write 1 on digital pin 13
+A video from that project can be seen on youtube
 
-	curl -H "Content-type: application/json" -X POST http://127.0.0.1:5000/arduino/digitalpin/13 -d '{"value":1}'
-
-
+[![Drumbot](http://img.youtube.com/vi/fc5ypkFRA6A/0.jpg)](http://www.youtube.com/watch?v=fc5ypkFRA6A "Spirit Drumbot")
